@@ -37,7 +37,7 @@ int main() {
             {
                 currentPlayer=p1;
             }
-        }; //problèmes restants : condition du WIN ; si personne ne gagne ?
+        }; //problèmes restants : condition du WIN ; si personne ne gagne, ne pas pouvoir remplir sur une case déjà remplie ?
     }
 
     return 0;
