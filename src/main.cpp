@@ -30,7 +30,7 @@ int main() {
             std::cout << currentPlayer.name << ", saisissez le numéro de la case dans laquelle vous voulez jouer (compris entre 1 et 9):\n";
             std::cin >> currentBox;
             
-            while (notCurrentPlayer.arrayPlayer[currentBox-1]==1)
+            while (notCurrentPlayer.arrayPlayer[currentBox-1]==1 || currentPlayer.arrayPlayer[currentBox-1] == 1)
             {
                 std::cout << currentPlayer.name << ", saisissez un autre numéro de case (compris entre 1 et 9):\n";
                 std::cin >> currentBox;
@@ -57,7 +57,7 @@ int main() {
                 currentPlayerWin=true;
                 break;
             }
-
+// pb si deux X ou deux O
             // idée pour si personne ne gagne : if somme de ts les élements des 2 currentPlayer.arrayPlayer ==9, break; et return "personne ne gagne"
             isp1Turn = !isp1Turn;
         };
