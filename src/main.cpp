@@ -27,7 +27,14 @@ int main() {
             std::cout << currentPlayer.name << ", saisissez le numéro de la case dans laquelle vous voulez jouer (compris entre 1 et 9):\n";
             std::cin >> currentBox;
             board[currentBox-1]=currentPlayer.symbol;
+            currentPlayer.arrayPlayer[currentBox-1]=1;
             draw_game_board(board);
+
+            if (countLine(currentPlayer.arrayPlayer))
+            {
+                currentPlayerWin=true;
+                break;
+            }
 
             if (currentPlayer.name==p1.name)
             {
@@ -37,7 +44,8 @@ int main() {
             {
                 currentPlayer=p1;
             }
-        }; //problèmes restants : condition du WIN ; si personne ne gagne, ne pas pouvoir remplir sur une case déjà remplie ?
+        };
+        std::cout << currentPlayer.name << " a gagné !\n"; //problèmes restants : condition du WIN ; si personne ne gagne, ne pas pouvoir remplir sur une case déjà remplie ?
     }
 
     return 0;
