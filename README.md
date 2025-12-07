@@ -1,6 +1,9 @@
 # TicTacToe_Romane_MARTEAU--BAZOUNI
 Projet de ProgAlgo, IMAC2028 S1
 
+La structure Player a était légèrement modifiée par rapport à la consigne. J'y ai ajouté du tableau d'int arrayPlayer. Lorsque le joueur met son symbole dans une case, alors le arrayPlayer ajoute un 1 dans cette même case. Cela facilite les conditions countLine, countColumn et countDiag qui n'ont plus qu'à faire la somme des lignes/colonnes/diagonales. Ces tableaux auraient pu être directement écrits dans le main, mais pour éviter des lignes de codes en plus, je les ai mis dans la strucutre, malgré la consigne.
+
+
 Condition du WIN :
 Faire 2 tableaux (1 pour chaque joueur) à remplir de 1 et de 0 : faire 3 fonctions (lireLigne, lireColonne, lireDiagonale) qui calcule la somme (si égale à 3 : WIN)
 + plus pratique pour améliorer l'IA (si somme égale à 2, bloquer)
