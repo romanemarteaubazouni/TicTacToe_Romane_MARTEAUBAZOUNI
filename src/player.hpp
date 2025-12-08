@@ -9,3 +9,4 @@ struct Player {
 };
 
 Player create_player();
+int sumArray(std::array<int, 9> &arrayPlayer);

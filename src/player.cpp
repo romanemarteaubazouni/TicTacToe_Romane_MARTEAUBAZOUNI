@@ -16,3 +16,13 @@ Player create_player() {
     };
     return p;
 }
+
+int sumArray(std::array<int, 9> &arrayPlayer)
+{
+    int sum{};
+    for (int i{}; i<9; i++)
+    {
+        sum+=arrayPlayer[i];
+    }
+    return sum;
+}
