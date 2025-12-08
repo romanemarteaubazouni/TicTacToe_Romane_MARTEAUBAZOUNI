@@ -3,6 +3,7 @@
 #include <ctime>
 #include "player.hpp"
 #include "board.hpp"
+#include "ia.hpp"
 
 int main() {
     std::srand(std::time(nullptr));

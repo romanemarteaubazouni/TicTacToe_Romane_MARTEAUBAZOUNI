@@ -9,4 +9,11 @@ struct Player {
 };
 
 Player create_player();
+
 int sumArray(std::array<int, 9> &arrayPlayer);
+
+bool countLine(std::array<int, 9> &arrayPlayer);
+
+bool countColumn(std::array<int, 9>& arrayPlayer);
+
+bool countDiag(std::array<int, 9>& arrayPlayer);
