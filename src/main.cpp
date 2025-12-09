@@ -44,7 +44,8 @@ int main() {
                 std::cin >> currentBox;
                 
                 /*Pour éviter de remplir 2 fois la même case*/
-                while (notCurrentPlayer.arrayPlayer[currentBox-1]==1 || currentPlayer.arrayPlayer[currentBox-1] == 1) {
+                /*Interdiction de donner un chiffre égal à autre chose que entre 1 et 9*/
+                while (notCurrentPlayer.arrayPlayer[currentBox-1]==1 || currentPlayer.arrayPlayer[currentBox-1] == 1 || currentBox > 9 || currentBox < 1) {
                     std::cout << currentPlayer.name << ", saisissez un autre numéro de case (compris entre 1 et 9):\n";
                     std::cin >> currentBox;
                     std::cin.clear();
@@ -56,7 +57,8 @@ int main() {
                     std::cout << currentPlayer.name << ", saisissez le numéro de la case dans laquelle vous voulez jouer (compris entre 1 et 9):\n";
                     std::cin >> currentBox;
                 /*Pour éviter de remplir 2 fois la même case*/
-                    while (notCurrentPlayer.arrayPlayer[currentBox-1]==1 || currentPlayer.arrayPlayer[currentBox-1] == 1) {
+                /*Interdiction de donner un chiffre égal à autre chose que entre 1 et 9*/
+                    while (notCurrentPlayer.arrayPlayer[currentBox-1]==1 || currentPlayer.arrayPlayer[currentBox-1] == 1 || currentBox > 9 || currentBox < 1) {
                         std::cout << currentPlayer.name << ", saisissez un autre numéro de case (compris entre 1 et 9):\n";
                         std::cin >> currentBox;
                         std::cin.clear();
@@ -75,6 +77,7 @@ int main() {
             board[currentBox-1]=currentPlayer.symbol;
             currentPlayer.arrayPlayer[currentBox-1]=1;
             draw_game_board(board);
+            std::cout << '\n';
 
             /*Conditions pour gagner*/
             if (countLine(currentPlayer.arrayPlayer)) {
