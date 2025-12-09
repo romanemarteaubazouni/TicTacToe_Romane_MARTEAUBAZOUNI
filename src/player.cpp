@@ -7,8 +7,7 @@ Player create_player() {
     std::cout << "Entrez le nom du joueur : \n";
     std::cin >> p.name;
     
-    while (p.symbol != 'X' && p.symbol != 'O') //on devrait avoir || ?
-    {
+    while (p.symbol != 'X' && p.symbol != 'O') {
         std::cout << "Entrez le caractere avec lequel vous souhaitez jouer (soit X, soit O) : \n";
         std::cin >> p.symbol;
         std::cin.clear();
@@ -17,8 +16,7 @@ Player create_player() {
     return p;
 }
 
-int sumArray(std::array<int, 9> &arrayPlayer)
-{
+int sumArray(std::array<int, 9> &arrayPlayer) {
     int sum{};
     for (int i{}; i<9; i++)
     {
@@ -27,8 +25,7 @@ int sumArray(std::array<int, 9> &arrayPlayer)
     return sum;
 }
 
-bool countLine(std::array<int, 9>& arrayPlayer)
-{
+bool countLine(std::array<int, 9>& arrayPlayer) {
     for (int i {}; i < 7; i += 3)
     {
         if (arrayPlayer[i]+arrayPlayer[i+1]+arrayPlayer[i+2] == 3)
@@ -39,8 +36,7 @@ bool countLine(std::array<int, 9>& arrayPlayer)
     return false;
 }
 
-bool countColumn(std::array<int, 9>& arrayPlayer)
-{
+bool countColumn(std::array<int, 9>& arrayPlayer) {
     for (int i{}; i < 3; i ++)
     {
         if (arrayPlayer[i]+arrayPlayer[i+3]+arrayPlayer[i+6] == 3)
@@ -51,8 +47,7 @@ bool countColumn(std::array<int, 9>& arrayPlayer)
     return false;
 }
 
-bool countDiag(std::array<int, 9>& arrayPlayer)
-{
+bool countDiag(std::array<int, 9>& arrayPlayer) {
     if (arrayPlayer[0]+arrayPlayer[4]+arrayPlayer[8] == 3 ||
         arrayPlayer[2]+arrayPlayer[4]+arrayPlayer[6] == 3)
     {
