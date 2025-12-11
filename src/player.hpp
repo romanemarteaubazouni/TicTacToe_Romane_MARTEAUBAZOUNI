@@ -1,19 +1,9 @@
 #pragma once
 #include <string>
-#include <array>
 
 struct Player {
     std::string name {""};
     char symbol {};
-    std::array<int, 9> arrayPlayer {0, 0, 0, 0, 0, 0, 0, 0, 0};
 };
 
 Player create_player();
-
-int sumArray(std::array<int, 9> &arrayPlayer);
-
-bool countLine(std::array<int, 9> &arrayPlayer);
-
-bool countColumn(std::array<int, 9>& arrayPlayer);
-
-bool countDiag(std::array<int, 9>& arrayPlayer);

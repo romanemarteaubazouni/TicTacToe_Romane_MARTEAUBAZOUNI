@@ -3,6 +3,7 @@
 #include <ctime>
 #include "player.hpp"
 #include "board.hpp"
+#include "game.hpp"
 
 int main() {
     std::srand(std::time(nullptr));
@@ -20,7 +21,7 @@ int main() {
     }
     else if (gameMode == 2) {
         p1 = create_player();
-        p2 = {"IA", 'X', {0, 0, 0, 0, 0, 0, 0, 0, 0}};
+        p2 = {"IA", 'X'};
         if (p1.symbol=='X') {
             p2.symbol='O';
         }
@@ -42,9 +43,7 @@ int main() {
                 std::cout << currentPlayer.name << ", saisissez le numéro de la case dans laquelle vous voulez jouer (compris entre 1 et 9):\n";
                 std::cin >> currentBox;
                 
-                /*Pour éviter de remplir 2 fois la même case*/
-                /*Interdiction de donner un chiffre égal à autre chose que entre 1 et 9*/
-                while (notCurrentPlayer.arrayPlayer[currentBox-1]==1 || currentPlayer.arrayPlayer[currentBox-1] == 1 || currentBox > 9 || currentBox < 1) {
+                while (boxIsFull(board, currentBox-1) || currentBox > 9 || currentBox < 1) {
                     std::cout << currentPlayer.name << ", saisissez un autre numéro de case (compris entre 1 et 9):\n";
                     std::cin >> currentBox;
                     std::cin.clear();
@@ -55,7 +54,7 @@ int main() {
                 if (isp1Turn) {
                     std::cout << currentPlayer.name << ", saisissez le numéro de la case dans laquelle vous voulez jouer (compris entre 1 et 9):\n";
                     std::cin >> currentBox;
-                    while (notCurrentPlayer.arrayPlayer[currentBox-1]==1 || currentPlayer.arrayPlayer[currentBox-1] == 1 || currentBox > 9 || currentBox < 1) {
+                    while (boxIsFull(board, currentBox-1) || currentBox > 9 || currentBox < 1) {
                         std::cout << currentPlayer.name << ", saisissez un autre numéro de case (compris entre 1 et 9):\n";
                         std::cin >> currentBox;
                         std::cin.clear();
@@ -64,7 +63,7 @@ int main() {
                 }
                 else if (!isp1Turn) {
                     currentBox=(std::rand()%9 + 1);
-                    while (notCurrentPlayer.arrayPlayer[currentBox-1]==1 || currentPlayer.arrayPlayer[currentBox-1] == 1) {
+                    while (boxIsFull(board, currentBox-1)) {
                         std::srand(std::time(nullptr));
                         currentBox=(std::rand()%9 + 1);
                 };
@@ -72,26 +71,25 @@ int main() {
             }
 
             board[currentBox-1]=currentPlayer.symbol;
-            currentPlayer.arrayPlayer[currentBox-1]=1;
             draw_game_board(board);
             std::cout << '\n';
 
             /*Conditions pour gagner*/
-            if (countLine(currentPlayer.arrayPlayer)) {
+            if (countLine(board)) {
                 currentPlayerWin=true;
                 std::cout << (isp1Turn ? p1.name : p2.name) << " a gagné !\n";
             }
-            else if (countColumn(currentPlayer.arrayPlayer)) {
+            else if (countColumn(board)) {
                 currentPlayerWin=true;
                 std::cout << (isp1Turn ? p1.name : p2.name) << " a gagné !\n";
             }
-            else if (countDiag(currentPlayer.arrayPlayer)) {
+            else if (countDiag(board)) {
                 currentPlayerWin=true;
                 std::cout << (isp1Turn ? p1.name : p2.name) << " a gagné !\n";
             }
-            else if (sumArray(currentPlayer.arrayPlayer)+sumArray(notCurrentPlayer.arrayPlayer)==9) {
+            else if (boardIsFull(board)) {
+                currentPlayerWin=true;
                 std::cout << "Match nul !\n";
-                break;
             }
             isp1Turn = !isp1Turn;
         };
