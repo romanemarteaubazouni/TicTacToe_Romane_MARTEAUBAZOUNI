@@ -32,6 +32,7 @@ int main() {
     
     while (!currentPlayerWin) {
         Player& currentPlayer = isp1Turn ? p1 : p2;
+        Player& notCurrentPlayer = isp1Turn ? p2 : p1;
 /***********************Déroulement du jeu**************************/
         if (gameMode==1) {
             std::cout << currentPlayer.name << ", saisissez le numéro de la case dans laquelle vous voulez jouer (compris entre 1 et 9):\n";
@@ -50,11 +51,7 @@ int main() {
             };
             }
             else if (!isp1Turn) {
-                currentBox=boxIA(board, currentPlayer);
-                // currentBox=(std::rand()%9 + 1);
-                // while (boxIsFull(board, currentBox-1)) {
-                //     std::srand(std::time(nullptr));
-                //     currentBox=(std::rand()%9 + 1);
+                currentBox=boxIA(board, notCurrentPlayer);
             };
             }
         

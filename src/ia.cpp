@@ -7,7 +7,6 @@
 #include <ctime>
 /***********************Calcul de la case optimale à jouer**************************/
 int boxIA(std::array<char, 9> &board, Player &p) {
-    std::srand(std::time(nullptr));
     int boxToPlay {-1};
     for (int i {}; i<9; i++) {
         if (board[i]!='.') {
