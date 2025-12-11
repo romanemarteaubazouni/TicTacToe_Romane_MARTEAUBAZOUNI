@@ -1,29 +1,33 @@
 #include "ia.hpp"
 #include "player.hpp"
+#include "game.hpp"
 #include <iostream>
 #include <array>
-
-int canBlock(std::array<char, 9> board, Player &ia) {
-    int boxToPlay {0};
+#include <cstdlib>
+#include <ctime>
+/***********************Calcul de la case optimale à jouer**************************/
+int boxIA(std::array<char, 9> &board, Player &p) {
+    std::srand(std::time(nullptr));
+    int boxToPlay {-1};
     for (int i {}; i<9; i++) {
         if (board[i]!='.') {
-            continue;
+            continue;/*On ne joue pas sur une case déjà prise*/
         }
+        
         else {
-            board[i]=ia.symbol;
+            board[i]=p.symbol;
             if (countLine(board) || countColumn(board) || countDiag(board)) {
-                boxToPlay=i;
+                boxToPlay=i; /*si l'humain gagne avec ce coup, alors l'IA jouera sur cette case*/
             }
-            else {
-                continue;
-            }
+            board[i]='.'; /*pour ne pas rééllement modifier le tableau*/
         }
     }
-    if (boxtoPlay==0) {
-        currentBox=(std::rand()%9 + 1);
-        while (boxIsFull(board, currentBox-1)) {
+    if (boxToPlay==-1) { /*s'il n'y a aucun coup gagnant pour l'humain, il choisit aléatoirement*/
+        boxToPlay=(std::rand()%9);
+        while (boxIsFull(board, boxToPlay)) {
             std::srand(std::time(nullptr));
-            currentBox=(std::rand()%9 + 1);
+            boxToPlay=(std::rand()%9);
         }
     }
+    return boxToPlay+1;
 }

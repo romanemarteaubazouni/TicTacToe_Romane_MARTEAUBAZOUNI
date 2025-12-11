@@ -50,13 +50,14 @@ int main() {
             };
             }
             else if (!isp1Turn) {
-                currentBox=(std::rand()%9 + 1);
-                while (boxIsFull(board, currentBox-1)) {
-                    std::srand(std::time(nullptr));
-                    currentBox=(std::rand()%9 + 1);
+                currentBox=boxIA(board, currentPlayer);
+                // currentBox=(std::rand()%9 + 1);
+                // while (boxIsFull(board, currentBox-1)) {
+                //     std::srand(std::time(nullptr));
+                //     currentBox=(std::rand()%9 + 1);
             };
             }
-        }
+        
         board[currentBox-1]=currentPlayer.symbol;
         draw_game_board(board);
         std::cout << '\n';
