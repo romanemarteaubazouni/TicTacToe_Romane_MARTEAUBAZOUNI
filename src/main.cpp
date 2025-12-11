@@ -4,6 +4,7 @@
 #include "player.hpp"
 #include "board.hpp"
 #include "game.hpp"
+#include "ia.hpp"
 
 int main() {
     std::srand(std::time(nullptr));
@@ -56,11 +57,9 @@ int main() {
             };
             }
         }
-
         board[currentBox-1]=currentPlayer.symbol;
         draw_game_board(board);
         std::cout << '\n';
-
 /***********************Tests de victoire**************************/
         if (countLine(board) || countColumn(board) || countDiag(board)) {
             currentPlayerWin=true;

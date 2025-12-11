@@ -17,3 +17,5 @@ bool countLine(std::array<char, 9> &board);
 bool countColumn(std::array<char, 9>& board);
 
 bool countDiag(std::array<char, 9>& board);
+
+// bool currentPlayerWins(int currentBox, std::array<char, 9> &board);
