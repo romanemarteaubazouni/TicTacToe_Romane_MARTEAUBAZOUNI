@@ -51,7 +51,7 @@ int main() {
             };
             }
             else if (!isp1Turn) {
-                currentBox=boxIA(board, notCurrentPlayer);
+                currentBox=boxIA(board, notCurrentPlayer, currentPlayer);
             };
             }
         

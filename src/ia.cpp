@@ -6,19 +6,23 @@
 #include <cstdlib>
 #include <ctime>
 /***********************Calcul de la case optimale à jouer**************************/
-int boxIA(std::array<char, 9> &board, Player &p) {
+int boxIA(std::array<char, 9> &board, Player &p, Player &ia) {
     int boxToPlay {-1};
     for (int i {}; i<9; i++) {
         if (board[i]!='.') {
             continue;/*On ne joue pas sur une case déjà prise*/
         }
-        
         else {
             board[i]=p.symbol;
             if (countLine(board) || countColumn(board) || countDiag(board)) {
                 boxToPlay=i; /*si l'humain gagne avec ce coup, alors l'IA jouera sur cette case*/
             }
-            board[i]='.'; /*pour ne pas rééllement modifier le tableau*/
+            
+            board[i]=ia.symbol;
+            if (countLine(board) || countColumn(board) || countDiag(board)) {
+                boxToPlay=i; /*si l'IA gagne, elle choisit cette case*/
+            }
+            board[i]='.'; /*pour ne pas réellement modifier */
         }
     }
     if (boxToPlay==-1) { /*s'il n'y a aucun coup gagnant pour l'humain, il choisit aléatoirement*/

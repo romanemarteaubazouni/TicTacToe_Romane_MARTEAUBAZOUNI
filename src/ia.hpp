@@ -3,4 +3,4 @@
 #include <array>
 #include "player.hpp"
 
-int boxIA(std::array<char, 9> &board, Player &p);
+int boxIA(std::array<char, 9> &board, Player &p, Player &ia);
