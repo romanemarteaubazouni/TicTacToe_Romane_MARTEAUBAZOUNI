@@ -1,6 +1,29 @@
 #include "game.hpp"
 #include <iostream>
 
+void initiatePlayers(Player &p1, Player &p2, int gameMode) {
+    if (gameMode == 1) {
+        p1 = create_player();
+        p2 = create_player();
+    }
+    else if (gameMode == 2) {
+        p1 = create_player();
+        p2 = {"IA", 'X'};
+        if (p1.symbol=='X') {
+            p2.symbol='O';
+        }
+    }
+}
+
+void askAgain(int &currentBox) {
+    std::cout << "Saisissez un autre numéro :\n";
+    std::cin >> currentBox;
+    std::cin.clear();
+    std::cin.ignore(255, '\n');
+}
+
+
+
 bool boxIsFull(std::array<char, 9> &board, int box) {
     if (board[box]!='.') {
         return true;

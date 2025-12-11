@@ -1,6 +1,10 @@
 #pragma once
 #include <array>
+#include "player.hpp"
 
+void initiatePlayers(Player &p1, Player &p2, int gameMode);
+
+void askAgain(int &currentBox);
 
 // Tests pour la victoire
 
