@@ -1,11 +1,12 @@
 #include "ia.hpp"
-#include "player.hpp"
 #include "game.hpp"
 #include <iostream>
 #include <array>
 #include <cstdlib>
 #include <ctime>
+
 /***********************Calcul de la case optimale à jouer**************************/
+
 int boxIA(std::array<char, 9> &board, Player &p, Player &ia) {
     int boxToPlay {-1};
     for (int i {}; i<9; i++) {
