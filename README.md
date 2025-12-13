@@ -13,6 +13,8 @@ J'avais laissé les joueurs rentrer un indice de case qui n'est pas compris dans
 
 Problème rencontré #4 :
 Mon main.cpp était d'une centaine d'une ligne mais le code marchait très bien. Il y a-t-il moyen d'ajouter des fonctions dans un header pour alléger le main ?
+--> Solution : création de la fonction runGame
+
 
 Amélioration de l'IA :
 Faire une copie du tableau dans une fonction. Dans cette fonction, l'IA teste toutes les possibilités restantes et regarde si elle peut bloquer le joueur. Si elle peut, elle fait se mouv dans le "vrai tableau" (celui que l'utilisateur voit). Sinon, elle joue aléatoirement.
