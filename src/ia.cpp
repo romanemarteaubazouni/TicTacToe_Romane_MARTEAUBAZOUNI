@@ -14,15 +14,16 @@ int boxIA(std::array<char, 9> &board, Player &p, Player &ia) {
             continue;/*On ne joue pas sur une case déjà prise*/
         }
         else {
+            board[i]=ia.symbol;
+            if (countLine(board) || countColumn(board) || countDiag(board)) {
+                boxToPlay=i; /*si l'IA gagne, elle choisit cette case*/
+            }
+            
             board[i]=p.symbol;
             if (countLine(board) || countColumn(board) || countDiag(board)) {
                 boxToPlay=i; /*si l'humain gagne avec ce coup, alors l'IA jouera sur cette case*/
             }
             
-            board[i]=ia.symbol;
-            if (countLine(board) || countColumn(board) || countDiag(board)) {
-                boxToPlay=i; /*si l'IA gagne, elle choisit cette case*/
-            }
             board[i]='.'; /*pour ne pas réellement modifier */
         }
     }
