@@ -82,8 +82,8 @@ bool countColumn(std::array<char, 9>& board) {
 }
 
 bool countDiag(std::array<char, 9>& board) {
-    if (board[0]!='.' && board[0]==board[4] && board[0]==board[8] ||
-        board[2]!='.' && board[2]==board[4] && board[2]==board[6])
+    if ((board[0]!='.' && board[0]==board[4] && board[0]==board[8]) ||
+        (board[2]!='.' && board[2]==board[4] && board[2]==board[6]))
     {
         return true;
     }
