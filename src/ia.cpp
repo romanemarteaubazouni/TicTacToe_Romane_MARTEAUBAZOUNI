@@ -6,41 +6,31 @@
 #include <ctime>
 
 /***********************Calcul de la case optimale à jouer**************************/
-
-int boxIA(std::array<char, 9> board, Player &p, Player &ia) {
-    int boxToPlay {-1};
+void doesPlayerWin(std::array<char, 9> board, Player &p, int &boxToPlay) {
     for (int i {}; i<9; i++) {
         if (boxIsFull(board, i)) {
             continue;/*On ne joue pas sur une case déjà prise*/
         }
         else {
-            board[i]=ia.symbol;
+            board[i]=p.symbol;
             if (countLine(board) || countColumn(board) || countDiag(board)) {
-                boxToPlay=i; /*si l'IA gagne, elle choisit cette case*/
+                boxToPlay=i; /*si le joueur gagne, l'IA jouera cette case*/
                 break;
             }
             board[i]='.';
         }
     }
+}
+
+int boxIA(std::array<char, 9> board, Player &p, Player &ia) {
+    int boxToPlay {-1};
+    doesPlayerWin(board, ia, boxToPlay);
 
     if (boxToPlay==-1) { /*s'il n'y a aucun coup gagnant pour l'IA, elle regarde pour l'humain*/
-        for (int i {}; i<9; i++) {
-            if (boxIsFull(board, i)) {
-                continue;/*On ne joue pas sur une case déjà prise*/
-            }
-            else {
-                board[i]=p.symbol;
-                if (countLine(board) || countColumn(board) || countDiag(board)) {
-                    boxToPlay=i; /*si l'IA gagne, elle choisit cette case*/
-                    break;
-                }
-                board[i]='.';
-            }
-        }
-        if (boxToPlay==-1) {
+        doesPlayerWin(board, p, boxToPlay);
+        if (boxToPlay==-1) { /*s'il n'y a aucun coup gagnant, elle joue aléatoirement*/
         boxToPlay=(std::rand()%9);
         while (boxIsFull(board, boxToPlay)) {
-            std::srand(std::time(nullptr));
             boxToPlay=(std::rand()%9);
         }
         }

@@ -101,7 +101,7 @@ void runGame(Player &p1, Player &p2, int gameMode, std::array<char, 9> &board) {
         Player& currentPlayer = isp1Turn ? p1 : p2;
         Player& notCurrentPlayer = isp1Turn ? p2 : p1;
 
-        if (gameMode==1) {
+        if (gameMode==1 || (gameMode==2 && isp1Turn)) {
             std::cout << currentPlayer.name << ", saisissez le numéro de la case dans laquelle vous voulez jouer (compris entre 1 et 9):\n";
             std::cin >> currentBox;
             
@@ -109,31 +109,22 @@ void runGame(Player &p1, Player &p2, int gameMode, std::array<char, 9> &board) {
                 askAgain(currentBox);
             }
         }
-        else if (gameMode==2) {
-            if (isp1Turn) {
-                std::cout << currentPlayer.name << ", saisissez le numéro de la case dans laquelle vous voulez jouer (compris entre 1 et 9):\n";
-                std::cin >> currentBox;
-                while (boxIsFull(board, currentBox-1) || currentBox > 9 || currentBox < 1) {
-                    askAgain(currentBox);
-                };
-            }
-            else if (!isp1Turn) {
-                currentBox=boxIA(board, notCurrentPlayer, currentPlayer);
-            };
-	}
+        else {
+            currentBox=boxIA(board, notCurrentPlayer, currentPlayer);
+	    }
 
-    board[currentBox-1]=currentPlayer.symbol;
-    draw_game_board(board);
-    std::cout << '\n';
+        board[currentBox-1]=currentPlayer.symbol;
+        draw_game_board(board);
+        std::cout << '\n';
 
-    if (countLine(board) || countColumn(board) || countDiag(board)) {
-        currentPlayerWin=true;
-        std::cout << (isp1Turn ? p1.name : p2.name) << " a gagné !\n";
-    }
-    else if (boardIsFull(board)) {
-        currentPlayerWin=true;
-        std::cout << "Match nul !\n";
-    }
-    isp1Turn = !isp1Turn;
+        if (countLine(board) || countColumn(board) || countDiag(board)) {
+            currentPlayerWin=true;
+            std::cout << (isp1Turn ? p1.name : p2.name) << " a gagné !\n";
+        }
+        else if (boardIsFull(board)) {
+            currentPlayerWin=true;
+            std::cout << "Match nul !\n";
+        }
+        isp1Turn = !isp1Turn;
     };
 }
