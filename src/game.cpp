@@ -101,7 +101,7 @@ void runGame(Player &p1, Player &p2, int gameMode, std::array<char, 9> &board) {
         Player& currentPlayer = isp1Turn ? p1 : p2;
         Player& notCurrentPlayer = isp1Turn ? p2 : p1;
 
-        if (gameMode==1 || (gameMode==2 && isp1Turn)) {
+        if (gameMode==1 || (gameMode==2 && isp1Turn)) { /*dans le cas de l'IA, p1 = humain et p2 = IA*/
             std::cout << currentPlayer.name << ", saisissez le numéro de la case dans laquelle vous voulez jouer (compris entre 1 et 9):\n";
             std::cin >> currentBox;
             
