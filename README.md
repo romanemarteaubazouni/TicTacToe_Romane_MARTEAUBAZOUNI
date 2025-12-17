@@ -26,7 +26,9 @@ Projet de ProgAlgo, IMAC2028 S1
 ## L'amélioration réalisée :
 L'IA est maintenant capable, à chaque tour, de déterminer si il existe une case avec laquelle le joeur humain peut gagner. Dans ce cas, elle le bloque. Elle peut aussi déterminer si il y a une case avec laquelle l'IA gagne. Sinon, elle joue aléatoirement.
 
-## Problèmes rencontrés / Chemin de pensée :
+Pour se faire, j'ai créé une fonction boxIA, qui copie le tableau de jeu. Pour chaque case, il vérifie si elle est pleine. Si non, il remplace le vide de la case par son symbole. Si elle gagne, currentBox=cette case. Si elle ne gagne nulle part, elle vérifie si l'humain gagne en re-parcourant le tableau. Si rien de tout ça, elle joue aléatoirement.
+
+## Problèmes rencontrés :
 
 Problème rencontré #1 :
 Au début, le currentPlayer était reconnu par son nom (currentPlayer=p1 puis à chaque fin de tour, currentPlayer changeait). Sauf que, avec la méthode des tableaux de 0 ajoutés dans la structure qui semblait beaucoup plus pratique pour améliorer l'IA (car elle a juste à savoir si la somme des lignes/colonnes et diagonales est égale à 2), arrayPlayer était alors écrasé à chaque fin de tour.

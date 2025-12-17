@@ -115,7 +115,7 @@ void runGame(Player &p1, Player &p2, int gameMode, std::array<char, 9> &board) {
                 std::cin >> currentBox;
                 while (boxIsFull(board, currentBox-1) || currentBox > 9 || currentBox < 1) {
                     askAgain(currentBox);
-            };
+                };
             }
             else if (!isp1Turn) {
                 currentBox=boxIA(board, notCurrentPlayer, currentPlayer);
