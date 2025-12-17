@@ -6,7 +6,7 @@
 #include <ctime>
 
 /***********************Calcul de la case optimale à jouer**************************/
-void doesPlayerWin(std::array<char, 9> board, Player &p, int &boxToPlay) {
+void chooseWinningBox(std::array<char, 9> board, Player &p, int &boxToPlay) {
     for (int i {}; i<9; i++) {
         if (boxIsFull(board, i)) {
             continue;/*On ne joue pas sur une case déjà prise*/
@@ -24,10 +24,10 @@ void doesPlayerWin(std::array<char, 9> board, Player &p, int &boxToPlay) {
 
 int boxIA(std::array<char, 9> board, Player &p, Player &ia) {
     int boxToPlay {-1};
-    doesPlayerWin(board, ia, boxToPlay);
+    chooseWinningBox(board, ia, boxToPlay);
 
     if (boxToPlay==-1) { /*s'il n'y a aucun coup gagnant pour l'IA, elle regarde pour l'humain*/
-        doesPlayerWin(board, p, boxToPlay);
+        chooseWinningBox(board, p, boxToPlay);
         if (boxToPlay==-1) { /*s'il n'y a aucun coup gagnant, elle joue aléatoirement*/
         boxToPlay=(std::rand()%9);
         while (boxIsFull(board, boxToPlay)) {
