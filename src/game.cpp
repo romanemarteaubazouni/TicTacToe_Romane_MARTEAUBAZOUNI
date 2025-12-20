@@ -36,14 +36,14 @@ void askAgain(int &currentBox) {
     std::cin.ignore(255, '\n');
 }
 
-/***********************Vérification de la victoire*************************/
-
 bool boxIsFull(std::array<char, 9> &board, int box) {
     if (board[box]!='.') {
         return true;
     }
     return false;
 }
+
+/***********************Vérification de la victoire/match nul*************************/
 
 bool boardIsFull(std::array<char, 9> &board) {
     int boxFull {};
