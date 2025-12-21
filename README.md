@@ -1,7 +1,7 @@
 # TicTacToe_Romane_MARTEAU--BAZOUNI
 Projet de ProgAlgo, IMAC2028 S1
 
-Les librairies utilisées dans ce projet sont les librairies de base de C++.
+Les librairies utilisées dans ce projet font parties de la bibliothèque standard C++.
 
 Ce code a été testé sur Windows 11.
 
